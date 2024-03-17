@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/index.js"></script>
+    <title>JavaScript</title>
+</head>
+<body>
+    <div id="myStudents"></div>
+    <br>
+    <div id="myStudentsOrdered"></div>
+    <br>
+    <div id="myErasmusStudent"></div>
+
+    <script>
+        students.forEach(student => {
+            let paragraph = document.createElement("p");
+            let studentInformations = document.createTextNode(student.display() +" Average =  " +  student.averageGrade());
+            paragraph.appendChild(studentInformations);
+            document.getElementById('myStudents').appendChild(paragraph);
+        });
+        document.getElementById('myStudents').appendChild(document.createElement("p").appendChild(document.createTextNode("The student with the hightest grade is " + studentWithHightestAverage.getFullName() + ", with the average grade of " + studentWithHightestAverage.averageGrade() + ".")))
+        
+        orderedListOfStudents.forEach(student => {
+            let paragraph = document.createElement("p");
+            let studentInformations = document.createTextNode(student.display() +" Average =  " +  student.averageGrade());
+            paragraph.appendChild(studentInformations);
+            document.getElementById('myStudentsOrdered').appendChild(paragraph);
+        });
+        erasmusStudents.forEach(student => {
+            let paragraph = document.createElement("p");
+            let studentInformations = document.createTextNode(student.display() +" Average =  " +  student.averageGrade());
+            paragraph.appendChild(studentInformations);
+            document.getElementById('myErasmusStudent').appendChild(paragraph);
+        });
+    </script>
+    <form>
+        <label for="firstname">firstname</label>
+        <input type="text" id="firstname" name="firstname">
+        <label for="lastname">lastname</label>
+        <input type="text" id="lastname" name="lastname">
+        <label for="yearOfBirth">yearOfBirth</label>
+        <input type="number" id="yearOfBirth" name="yearOfBrith" min="2000" max="2004">
+        <label for="group">group</label>
+        <input type="number" id="group" name="group" min="1" max="3">
+        <label for="erasmus">erasmus</label>
+        <input type="checkbox" name="erasmus" id="erasmus">
+        <label for="grade">grades</label>
+        <input type="number" name="grade" id="grade" min="1" max="5">
+        <button onclick="addGrade()">Ajouté une note !!</button>
+        <button id="addStudent" onclick="addstudent()">envoyer</button>
+    </form>
+    <script>
+        let formGrades;
+        function addGrade(){
+            formGrades.push(document.getElementById("grade").value);
+            console.log(formGrades);
+        }
+    </script>
+</body>
+</html>
