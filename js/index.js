@@ -58,10 +58,10 @@ class Student extends Person{
         }
 
         return "Student's name is " + this.getFullName() + 
-        ", he is " + this.getAge() + " years old.\n" + 
-        "He is part of goup " + this.getGroup() + ".\n"+
+        ",  is " + this.getAge() + " years old.\n" + 
+        " is part of goup " + this.getGroup() + ".\n"+
         erasmus + 
-        "His grades are : " + this.grades.toString();
+        " grades are : " + this.grades.toString();
     }
 
 }
@@ -138,33 +138,42 @@ for (let n = 0; n < 10; n++) {
 }
 
 // find the student with the hightest average grade.
-let studentWithHightestAverage = students[0]
-students.forEach(student => {
-    if (student.averageGrade() > studentWithHightestAverage.averageGrade()) {
-        studentWithHightestAverage = student;
-    }
-});
+function findBestStudent() {
+    let studentWithHightestAverage = students[0]
+    students.forEach(student => {
+        if (student.averageGrade() > studentWithHightestAverage.averageGrade()) {
+            studentWithHightestAverage = student;
+        }
+    });
+    return studentWithHightestAverage;
+}
 
-var orderedListOfStudents = new Array();
-students.forEach(student => {
-    orderedListOfStudents.push(student);
-});
+function orderStudentByAverageGrade() {
+    var orderedListOfStudents = new Array();
+    students.forEach(student => {
+        orderedListOfStudents.push(student);
+    });
 
-for (let i = 0; i < orderedListOfStudents.length-1; i++) {
-    let indexWithHightestAverage = i;
-    for(let j = i+1; j < orderedListOfStudents.length ; j++) {
-       if(orderedListOfStudents[indexWithHightestAverage].averageGrade() <= orderedListOfStudents[j].averageGrade()){
-            indexWithHightestAverage = j;
-       }
-    }
-    let buff = orderedListOfStudents[i];
-    orderedListOfStudents[i] = orderedListOfStudents[indexWithHightestAverage];
-    orderedListOfStudents[indexWithHightestAverage] = buff;
-};
+    for (let i = 0; i < orderedListOfStudents.length-1; i++) {
+        let indexWithHightestAverage = i;
+        for(let j = i+1; j < orderedListOfStudents.length ; j++) {
+        if(orderedListOfStudents[indexWithHightestAverage].averageGrade() <= orderedListOfStudents[j].averageGrade()){
+                indexWithHightestAverage = j;
+        }
+        }
+        let buff = orderedListOfStudents[i];
+        orderedListOfStudents[i] = orderedListOfStudents[indexWithHightestAverage];
+        orderedListOfStudents[indexWithHightestAverage] = buff;
+    };
+    return orderedListOfStudents;
+}
 
-var erasmusStudents = new Array();
-students.forEach(student=> {
-    if (student.getIsErasmus() == true) {
-        erasmusStudents.push(student);
-    }
-});
+function createListOfErasmusStudent(){
+    var erasmusStudents = new Array();
+    students.forEach(student=> {
+        if (student.getIsErasmus() == true) {
+            erasmusStudents.push(student);
+        }
+    });
+    return erasmusStudents;
+}
