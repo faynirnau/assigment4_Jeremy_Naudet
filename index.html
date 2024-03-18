@@ -15,9 +15,9 @@
 
     <script>
         function display(){
-            document.getElementById("myStudents").innerHTML = " ";
-            document.getElementById("myStudentsOrdered").innerHTML = " ";
-            document.getElementById("myErasmusStudent").innerHTML = " ";
+            document.getElementById("myStudents").innerHTML = "";
+            document.getElementById("myStudentsOrdered").innerHTML = "";
+            document.getElementById("myErasmusStudent").innerHTML = "";
             students.forEach(student => {
             let paragraph = document.createElement("p");
             let studentInformations = document.createTextNode(student.display() +" Average =  " +  student.averageGrade());
